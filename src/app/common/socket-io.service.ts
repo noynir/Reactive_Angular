@@ -12,7 +12,6 @@ export class SocketIoService {
   constructor() {
     this.stream$=Observable.create((observer)=>{
       console.log('connect to socket...');
-      if(!this.socket){
 
         this.socket= io.connect(this.host);
         this.socket.on("connect", () => this.connect());
@@ -24,7 +23,6 @@ export class SocketIoService {
         this.socket.on('tweet',(data)=>{
           observer.next(data);
         });
-      }
       return ()=>{
         //console.log('disconnected...')
         this.socket.disconnect();

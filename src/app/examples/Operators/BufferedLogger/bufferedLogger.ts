@@ -43,10 +43,10 @@ export class BufferedLoggerComponent implements OnInit,AfterViewInit {
       .fromEvent(this.buttonElem2.nativeElement,'click')
       .map(_=>'click btn2');
 
-    let interval = Observable.interval(3000).map(()=>'interval fired');
+    let interval = Observable.interval(1000).do((number)=>console.log(number)).map(()=>'interval fired');
 
     Observable.merge(clickStream$,ClickStream2$,interval)
-      .bufferTime((10*1000),(10*1000),30)
+      .bufferTime((10*1000),(10*1000),10)
       .subscribe((data)=>{
         console.log(data);
       })

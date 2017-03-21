@@ -7,9 +7,8 @@ import {Observable, Subscription} from "rxjs";
   selector: 'twitter-stream',
   template: `
       <div>
-        <input type="text" >
-      
         <div *ngFor="let tweet of tweets" >
+           
               {{tweet.text}}
         </div>
       </div>
@@ -33,7 +32,10 @@ export class TwitterStreamComponent implements OnInit,OnDestroy{
 
   ngOnInit(){
      let stream$=this.stream.connectToStream();
-
+      this.tweetsSubscribe=stream$
+        .subscribe((tweet)=>{
+          this.tweets.push(tweet);
+        });
      //stream$.subscribe((data)=>console.log(data));
 
      // let stream$ = Observable.create((observer)=>{
@@ -76,11 +78,7 @@ export class TwitterStreamComponent implements OnInit,OnDestroy{
       .take(5);
 
 
-    this.tweetsSubscribe=Observable
-      .merge(firstPage$,restPage$)
-      .subscribe((arr)=>{
-          this.tweetsData.push(arr[0]);
-      });
+
   }
 
   ngOnDestroy(){

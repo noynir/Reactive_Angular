@@ -11,6 +11,7 @@ import {AppRouting} from "./app.routing";
 import {IntroModule} from "./examples/intro/introModule";
 import {OperatorsModule} from "./examples/Operators/operators.module";
 import {HigherOrderModule} from "./examples/higher-order/higher-order.module";
+import {SubjectsModule} from "./examples/subjects/subjects.module";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {HigherOrderModule} from "./examples/higher-order/higher-order.module";
     AppRouting,
     IntroModule,
     OperatorsModule,
-    HigherOrderModule
+    HigherOrderModule,
+    SubjectsModule
   ],
   providers: [SocketIoService],
   bootstrap: [AppComponent]

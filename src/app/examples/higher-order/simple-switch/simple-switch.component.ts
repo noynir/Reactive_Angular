@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   template: `
     <div>
       <div>
-          <div>{{counter}}</div>
+          <div>{{counter$ | async}}</div>
           <div>
               <button #btnStart >Start</button>
               <button #btnStop >Stop</button>
@@ -23,7 +23,8 @@ export class SimpleSwitchComponent implements OnInit,AfterViewInit {
   @ViewChild('btnStop')
   private btnStop:ElementRef;
 
-  private counter:number;
+
+  private counter$:Observable<number>;
 
   private stopper$:Observable<number>;
   constructor() {
@@ -37,12 +38,11 @@ export class SimpleSwitchComponent implements OnInit,AfterViewInit {
     const startStream$=Observable.fromEvent(this.btnStart.nativeElement,'click');
     const stopStream$=Observable.fromEvent(this.btnStop.nativeElement,'click');
 
-    startStream$
+    this.counter$=startStream$
       .switchMap((e)=>this.stopper$.takeUntil(stopStream$))
       .startWith(0)
-      .subscribe((number)=>{
-          this.counter=number;
-      });
+
+
 
 
 
