@@ -4,17 +4,29 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import {SocketIoService} from "./common/socket-io.service";
+import {SideNavComponent} from "./common/components/SideNav/sideNav.component";
+import {TwitterStreamComponent} from "./examples/Stream/twitterStream";
+import {AppRouting} from "./app.routing";
+import {IntroModule} from "./examples/intro/introModule";
+import {OperatorsModule} from "./examples/Operators/operators.module";
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SideNavComponent,
+    TwitterStreamComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRouting,
+    IntroModule,
+    OperatorsModule
   ],
-  providers: [],
+  providers: [SocketIoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
