@@ -10,6 +10,7 @@ import {TwitterStreamComponent} from "./examples/Stream/twitterStream";
 import {AppRouting} from "./app.routing";
 import {IntroModule} from "./examples/intro/introModule";
 import {OperatorsModule} from "./examples/Operators/operators.module";
+import {HigherOrderModule} from "./examples/higher-order/higher-order.module";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {OperatorsModule} from "./examples/Operators/operators.module";
     HttpModule,
     AppRouting,
     IntroModule,
-    OperatorsModule
+    OperatorsModule,
+    HigherOrderModule
   ],
   providers: [SocketIoService],
   bootstrap: [AppComponent]
