@@ -25,19 +25,7 @@ export class DataOverTimeCancelComponent implements OnInit {
 
   ngOnInit(){
 
-    this.interval=Observable.interval(1000).take(6);
-
-
-
-    let subscription=this.interval.subscribe(
-      (item)=>this.numbers.push(item),
-      (err) => {
-        this.intervalState='error';
-      },
-      ()=> this.intervalState='Done'
-    );
-
-    setTimeout(()=>subscription.unsubscribe(),3000);
+    //show unsubscribe
 
 
   }

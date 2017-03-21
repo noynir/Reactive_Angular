@@ -10,24 +10,14 @@ export class SocketIoService {
   private stream$:Observable<any>;
 
   constructor() {
-    this.stream$=Observable.create((observer)=>{
-      console.log('connect to socket...');
 
+        console.log('connect to socket...');
         this.socket= io.connect(this.host);
         this.socket.on("connect", () => this.connect());
-        // this.socket.on("disconnect", () => this.disconnect());
-        // this.socket.on("error", (error: string) => {
-        //   console.log(`ERROR: "${error}" (${host})`);
-        // });
-
-        this.socket.on('tweet',(data)=>{
-          observer.next(data);
-        });
-      return ()=>{
-        //console.log('disconnected...')
+        this.socket.on('tweet',(data)=>{});
         this.socket.disconnect();
-      }
-    }).publish().refCount();
+
+
   }
 
   connectToStream():Observable<any> {

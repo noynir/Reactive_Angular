@@ -34,22 +34,7 @@ export class BufferedLoggerComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit(){
 
-    let clickStream$=Observable
-      .fromEvent(this.buttonElem.nativeElement,'click')
-      .map(_=>'click btn1');
 
-
-    let ClickStream2$=Observable
-      .fromEvent(this.buttonElem2.nativeElement,'click')
-      .map(_=>'click btn2');
-
-    let interval = Observable.interval(1000).do((number)=>console.log(number)).map(()=>'interval fired');
-
-    Observable.merge(clickStream$,ClickStream2$,interval)
-      .bufferTime((10*1000),(10*1000),10)
-      .subscribe((data)=>{
-        console.log(data);
-      })
 
   }
 

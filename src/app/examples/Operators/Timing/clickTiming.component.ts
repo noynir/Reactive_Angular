@@ -32,27 +32,7 @@ export class ClickTimingComponent implements AfterViewInit{
 
   ngAfterViewInit(){
 
-    let clickStream$=Observable
-        .fromEvent(this.buttonElem.nativeElement,'click');
-
-    let clickSumStream$ =clickStream$.map((e)=> 1)
-      .debounceTime(300)
-      .scan((acc,value)=>acc+value)
-      .subscribe((time)=>{
-         this.counter=time;
-      });
-
-    let ClickStream2$=Observable
-        .fromEvent(this.buttonElem2.nativeElement,'click');
-
-
-    let multiClickStream$=
-      ClickStream2$.buffer(ClickStream2$.debounceTime(300))
-      .map((arr)=>arr.length)
-      .filter(x=> x>=2 )
-      .subscribe((length)=>{
-         this.multiClickCounter=length;
-      });
+      //Timing with debuounce buffer and scan...
 
 
 

@@ -63,19 +63,19 @@ export class TwitterStreamComponent implements OnInit,OnDestroy{
 
 
 
-    let restPage$ = stream$
-      .skip(5)
-      .bufferCount(5)
-      .do((arr)=>{
-        console.log(arr);
-      });
-
-    let firstPage$: Observable<any>= stream$
-      .scan((acc,curr)=> [...acc,curr],[])
-      .do((arr)=>{
-        console.log(arr);
-      })
-      .take(5);
+    // let restPage$ = stream$
+    //   .skip(5)
+    //   .bufferCount(5)
+    //   .do((arr)=>{
+    //     console.log(arr);
+    //   });
+    //
+    // let firstPage$: Observable<any>= stream$
+    //   .scan((acc,curr)=> [...acc,curr],[])
+    //   .do((arr)=>{
+    //     console.log(arr);
+    //   })
+    //   .take(5);
 
 
 

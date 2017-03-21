@@ -55,35 +55,10 @@ export class AutocompleteComponent implements OnInit {
 
   ngOnInit() {
 
-      this.searchResults$
-        .debounceTime(300)
-        .distinctUntilChanged()
-        .switchMap((value)=> this.fetchResults(value))
-        .map((response)=>response.json())
-        //.map((data)=>data.results);
-        .subscribe((data)=> this.searchResults=data.results);
-
-    this.searchResultsMulti$
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .do(()=>this.searchResultsMulti=[])
-      .switchMap((value)=> {
-         return Observable.merge(this.fetchResults(value),this.fetchFilmsResults(value));
-      })
-      .map((response)=>response.json())
-      .do(data=>console.log(data))
-      .map(data=>data.results)
-      .subscribe((data)=> this.searchResultsMulti=[...this.searchResultsMulti,...data]);
-
   }
 
   onKeyup(value,isMulti){
-    if(isMulti){
-      this.searchResultsMulti$.next(value);
-    }
-    else {
-      this.searchResults$.next(value);
-    }
+
 
   }
   fetchResults(term){

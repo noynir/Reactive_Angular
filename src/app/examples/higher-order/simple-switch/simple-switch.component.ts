@@ -35,12 +35,7 @@ export class SimpleSwitchComponent implements OnInit,AfterViewInit {
   }
   ngAfterViewInit(){
 
-    const startStream$=Observable.fromEvent(this.btnStart.nativeElement,'click');
-    const stopStream$=Observable.fromEvent(this.btnStop.nativeElement,'click');
-
-    this.counter$=startStream$
-      .switchMap((e)=>this.stopper$.takeUntil(stopStream$))
-      .startWith(0)
+   //switchMap
 
 
 

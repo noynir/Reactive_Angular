@@ -38,23 +38,7 @@ export class CombineClickStreamComponent implements AfterViewInit{
   private players=['Michael Jordan',]
   ngAfterViewInit(){
 
-    let clickStream$=Observable
-        .fromEvent(this.buttonElem.nativeElement,'click');
-
-    let clickSumStream$ =clickStream$.map((e)=> 1)
-      .startWith(0)
-      .scan((acc,value)=>acc+value);
-
-    let ClickStream2$=Observable
-        .fromEvent(this.buttonElem2.nativeElement,'click');
-
-    let clickSumStream2$ =ClickStream2$.map((e)=> 1)
-      .startWith(0)
-      .scan((acc,value)=>acc+value);
-
-
-    this.totalVotes = clickSumStream$.combineLatest(clickSumStream2$,(jordan,lebron)=> `Jordan:${jordan} LeBron:${lebron}`);
-
+    //combine latest with startWith
 
 
 

@@ -22,10 +22,7 @@ export class DataOverTimeComponent implements OnInit {
 
   ngOnInit(){
 
-    let interval=Observable.interval(1000).take(6);
-
-
-    interval.subscribe((item)=>this.numbers.push(item));
+    //Simple interval
   }
 
 }
